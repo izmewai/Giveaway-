@@ -2,534 +2,378 @@
 <html lang="my">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Giveaway</title>
+<title>WYMH Giveaway</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
-
 *{
  box-sizing:border-box;
  margin:0;
  padding:0;
- font-family:Nunito,sans-serif;
+ font-family:Arial,"Myanmar Text",sans-serif;
 }
 
 body{
- background:linear-gradient(180deg,#e8f8ff,#f8fcff);
- color:#345c70;
+ background:#eaf8ff;
+ color:#183b50;
  min-height:100vh;
 }
 
-button,input,select{
- font:inherit;
-}
-
-button{
- border:0;
- cursor:pointer;
-}
-
-.header{
+header{
+ background:linear-gradient(135deg,#8edcff,#c9f1ff);
+ padding:17px 15px;
  position:sticky;
  top:0;
- z-index:50;
- height:70px;
- padding:0 18px;
+ z-index:20;
+ box-shadow:0 4px 18px rgba(50,150,190,.15);
+}
+
+.header-row{
  display:flex;
  align-items:center;
  justify-content:space-between;
- background:rgba(255,255,255,.94);
- border-bottom:1px solid #d8edf5;
 }
 
 .logo{
- font-size:25px;
- font-weight:900;
- color:#55aeda;
+ font-size:22px;
+ font-weight:800;
 }
 
 .bell{
- position:relative;
  width:43px;
  height:43px;
+ border:0;
  border-radius:50%;
- background:#e2f5fd;
- font-size:20px;
-}
-
-.badge{
- position:absolute;
- top:-3px;
- right:-3px;
- min-width:18px;
- height:18px;
- padding:0 4px;
- border-radius:20px;
- background:#ff8fa8;
- color:#fff;
- font-size:10px;
- font-weight:900;
- display:flex;
- align-items:center;
- justify-content:center;
+ background:white;
+ font-size:21px;
+ cursor:pointer;
 }
 
 .container{
- width:100%;
- max-width:850px;
+ width:min(950px,94%);
  margin:auto;
- padding:25px 16px 60px;
+ padding:20px 0 60px;
 }
 
-.page{
- display:none;
-}
-
-.page.active{
- display:block;
-}
-
-.welcome{
+.login-card{
+ background:white;
+ border-radius:25px;
+ padding:25px;
  text-align:center;
- padding:18px 0 25px;
+ box-shadow:0 8px 30px rgba(55,150,190,.12);
+ margin-bottom:20px;
 }
 
-.welcomeIcon{
- font-size:48px;
+.login-card h2{
+ margin-bottom:8px;
 }
 
-.welcome h1{
- color:#4096bd;
- font-size:30px;
- font-weight:900;
+.login-card p{
+ color:#718894;
+ margin-bottom:18px;
 }
 
-.welcome p{
- color:#8aa8b6;
- font-size:14px;
- margin-top:4px;
+#telegramLogin{
+ display:flex;
+ justify-content:center;
 }
 
-.menu{
- display:grid;
- gap:14px;
+.user-box{
+ display:none;
+ align-items:center;
+ justify-content:space-between;
+ background:#f2fbff;
+ border:1px solid #ccebf5;
+ padding:12px;
+ border-radius:18px;
+ gap:10px;
 }
 
-.menuCard{
- background:#fff;
- border:2px solid #d8f0f8;
- border-radius:24px;
- padding:22px;
+.user-info{
  display:flex;
  align-items:center;
- gap:15px;
- box-shadow:0 8px 25px rgba(69,166,207,.09);
+ gap:10px;
+}
+
+.user-photo{
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ object-fit:cover;
+}
+
+.logout{
+ background:#ff7193;
+ color:white;
+ padding:9px 13px;
+ border-radius:12px;
+}
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
+ margin:20px 0;
+}
+
+.big-card{
+ background:white;
+ border-radius:23px;
+ padding:26px 13px;
+ text-align:center;
+ cursor:pointer;
+ box-shadow:0 7px 25px rgba(60,160,200,.10);
  transition:.2s;
 }
 
-.menuCard:active{
- transform:scale(.98);
+.big-card:hover{
+ transform:translateY(-3px);
 }
 
-.menuIcon{
- width:60px;
- height:60px;
- border-radius:20px;
- background:#e5f7ff;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:28px;
- flex:none;
+.icon{
+ font-size:36px;
+ margin-bottom:10px;
 }
 
-.menuText{
- flex:1;
+.section{
+ background:white;
+ border-radius:24px;
+ padding:20px;
+ margin-top:18px;
+ box-shadow:0 7px 25px rgba(60,160,200,.09);
 }
 
-.menuText h3{
- font-size:17px;
- color:#397a98;
- font-weight:900;
-}
-
-.menuText p{
- font-size:12px;
- color:#9aafb9;
- margin-top:4px;
-}
-
-.arrow{
- font-size:27px;
- color:#8acbe7;
-}
-
-.back{
- background:#e2f5fc;
- color:#4c91ad;
- padding:9px 16px;
- border-radius:14px;
- font-weight:900;
- margin-bottom:17px;
-}
-
-.title{
- color:#3f92b9;
- font-size:24px;
- font-weight:900;
+.section h3{
  margin-bottom:15px;
 }
 
-.card{
- background:#fff;
- border:2px solid #d9f0f8;
- border-radius:24px;
- padding:19px;
- margin-bottom:14px;
- box-shadow:0 8px 25px rgba(69,166,207,.09);
-}
-
-.top{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:8px;
-}
-
-.amount{
- font-size:25px;
- font-weight:900;
- color:#3e96be;
-}
-
-.status{
- padding:6px 11px;
+.giveaway{
+ border:1px solid #d5f1fb;
  border-radius:20px;
- background:#e3f8eb;
- color:#4cae73;
- font-size:11px;
- font-weight:900;
+ padding:17px;
+ margin-bottom:13px;
+ background:#fbfeff;
 }
 
-.status.closed{
- background:#ffe7ec;
- color:#e6768d;
+.giveaway-title{
+ font-size:20px;
+ font-weight:800;
 }
 
-.info{
- color:#789aa9;
+.meta{
+ color:#6d8793;
  font-size:13px;
- line-height:1.9;
- margin:12px 0;
+ margin:7px 0;
+}
+
+.progress{
+ height:9px;
+ background:#e5f5fa;
+ border-radius:20px;
+ overflow:hidden;
+ margin:10px 0;
+}
+
+.progress span{
+ display:block;
+ height:100%;
+ background:#65c9ef;
 }
 
 .primary{
  width:100%;
- padding:14px;
- border-radius:16px;
- background:#70c5e8;
- color:#fff;
- font-weight:900;
- font-size:15px;
-}
-
-.secondary{
- width:100%;
- padding:12px;
+ padding:13px;
  border-radius:15px;
- background:#e7f7fc;
- color:#4d8da7;
- font-weight:900;
- margin-top:8px;
+ background:#67c9ef;
+ color:white;
+ font-size:16px;
+ font-weight:700;
+ cursor:pointer;
 }
 
-.empty{
- padding:35px 18px;
- background:#fff;
- border:2px dashed #cdebf6;
- border-radius:22px;
- text-align:center;
- color:#92abb6;
+.primary:disabled{
+ opacity:.5;
 }
 
-.adminOpen{
- display:block;
- margin:30px auto 0;
- background:none;
- color:#86a9b7;
- text-decoration:underline;
- font-size:13px;
+.admin-btn{
+ margin-top:20px;
+ background:#183b50;
+ color:white;
+ padding:12px 18px;
+ border-radius:14px;
+ cursor:pointer;
+}
+
+.hidden{
+ display:none!important;
 }
 
 .modal{
- display:none;
  position:fixed;
  inset:0;
- background:rgba(40,83,101,.38);
- z-index:100;
- padding:18px;
- overflow:auto;
-}
-
-.modal.show{
- display:flex;
- align-items:center;
+ background:rgba(15,45,60,.45);
+ display:none;
  justify-content:center;
-}
-
-.modalBox{
- width:100%;
- max-width:530px;
- max-height:93vh;
- overflow:auto;
- background:#fff;
- border-radius:27px;
- padding:22px;
- box-shadow:0 20px 70px rgba(30,80,100,.22);
-}
-
-.modalHead{
- display:flex;
  align-items:center;
- justify-content:space-between;
- margin-bottom:18px;
+ z-index:100;
+ padding:15px;
 }
 
-.modalHead h2{
- color:#3f90b7;
- font-size:22px;
- font-weight:900;
+.modal-box{
+ background:white;
+ width:min(530px,100%);
+ max-height:90vh;
+ overflow:auto;
+ border-radius:25px;
+ padding:22px;
 }
 
 .close{
- width:38px;
- height:38px;
+ float:right;
+ background:#eefaff;
+ width:35px;
+ height:35px;
  border-radius:50%;
- background:#edf8fc;
- color:#568ca1;
- font-size:20px;
-}
-
-.field{
- margin-bottom:14px;
-}
-
-.field label{
- display:block;
- color:#668d9c;
- font-size:13px;
- font-weight:900;
- margin-bottom:6px;
-}
-
-.field input,
-.field select{
- width:100%;
- border:2px solid #d8edf5;
- border-radius:14px;
- padding:12px;
- outline:none;
- background:#fbfeff;
- color:#4c7587;
-}
-
-.choice{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:9px;
-}
-
-.choice button{
- padding:13px;
- border-radius:15px;
- background:#edf9fd;
- color:#5a91a6;
- font-weight:900;
- border:2px solid transparent;
-}
-
-.choice button.selected{
- background:#dcf4ff;
- border-color:#70c5e8;
- color:#3e8daf;
-}
-
-.billGrid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:9px;
-}
-
-.bill{
- padding:13px 5px;
- border-radius:15px;
- border:2px solid #e1f0f5;
- background:#fff;
- color:#628a9b;
- font-weight:900;
-}
-
-.bill.selected{
- border-color:#70c5e8;
- background:#e7f8ff;
- color:#3f8daf;
-}
-
-.notify{
- background:#f4fbfe;
- border:1px solid #dceff6;
- border-radius:16px;
- padding:13px;
- margin-bottom:9px;
-}
-
-.notify b{
- color:#4b8da8;
-}
-
-.notify small{
- display:block;
- color:#9bafb8;
- margin-top:3px;
-}
-
-.spinBox{
- text-align:center;
- padding:10px 0 20px;
-}
-
-.spinCircle{
- width:180px;
- height:180px;
- margin:10px auto 16px;
- border-radius:50%;
- background:linear-gradient(145deg,#dff7ff,#bceaff);
- border:8px solid #fff;
- box-shadow:0 12px 35px rgba(74,175,218,.22);
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:66px;
- font-weight:900;
- color:#398db5;
-}
-
-.spinCircle.spinning{
- animation:pulse .35s infinite alternate;
-}
-
-@keyframes pulse{
- from{transform:scale(1)}
- to{transform:scale(1.06)}
-}
-
-.spinLabel{
- color:#8ba8b5;
- font-weight:800;
-}
-
-.winnerBox{
- text-align:center;
- padding:10px 0 20px;
-}
-
-.winnerSmall{
- color:#86a4b0;
- font-weight:800;
-}
-
-.winnerNumber{
- font-size:86px;
- line-height:1;
- font-weight:900;
- color:#3997bf;
- margin:10px 0;
-}
-
-.timeBox{
- background:#f0faff;
- border-radius:15px;
- padding:11px;
- color:#6c99a9;
- font-size:12px;
- margin:12px 0;
-}
-
-.adminItem{
- background:#f7fcfe;
- border:1px solid #dceff6;
- border-radius:18px;
- padding:15px;
- margin-bottom:10px;
-}
-
-.adminItem h3{
- color:#438ca9;
- font-size:16px;
-}
-
-.adminItem p{
- color:#7899a6;
- font-size:12px;
- line-height:1.8;
- margin-top:5px;
-}
-
-.adminButtons{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:7px;
- margin-top:10px;
-}
-
-.adminButtons button{
- padding:10px;
- border-radius:12px;
- background:#e6f6fc;
- color:#4b8da5;
- font-weight:900;
-}
-
-.adminButtons .delete{
- background:#ffe8ed;
- color:#dd7287;
-}
-
-.receipt{
- width:100%;
- max-height:300px;
- object-fit:contain;
- margin-top:10px;
- border-radius:15px;
- background:#effaff;
-}
-
-hr{
  border:0;
- border-top:1px solid #e3f0f5;
- margin:20px 0;
+ font-size:20px;
+ cursor:pointer;
 }
 
-@media(min-width:650px){
+input,select{
+ width:100%;
+ padding:12px;
+ margin:7px 0 13px;
+ border:1px solid #ccebf5;
+ border-radius:13px;
+ outline:none;
+}
 
- .menu{
-  grid-template-columns:repeat(3,1fr);
+.option-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+ margin:10px 0 15px;
+}
+
+.option{
+ padding:16px;
+ background:#effaff;
+ border:2px solid transparent;
+ border-radius:15px;
+ cursor:pointer;
+ text-align:center;
+}
+
+.option.active{
+ border-color:#67c9ef;
+ background:#dff6ff;
+}
+
+.notice{
+ background:#fff9df;
+ border:1px solid #ffe9a8;
+ padding:12px;
+ border-radius:14px;
+ margin-bottom:13px;
+}
+
+.notification{
+ border-bottom:1px solid #edf4f7;
+ padding:12px 0;
+}
+
+.winner{
+ text-align:center;
+ background:#effbff;
+ border-radius:20px;
+ padding:25px;
+}
+
+.winner-number{
+ font-size:80px;
+ font-weight:900;
+ color:#40b9e8;
+ margin:15px 0;
+}
+
+.spin-number{
+ text-align:center;
+ font-size:75px;
+ font-weight:900;
+ color:#40b9e8;
+ padding:25px;
+}
+
+.admin-item{
+ border:1px solid #dceff6;
+ border-radius:17px;
+ padding:15px;
+ margin-bottom:12px;
+}
+
+.admin-actions{
+ display:flex;
+ gap:8px;
+ margin-top:10px;
+ flex-wrap:wrap;
+}
+
+.small{
+ padding:9px 12px;
+ border-radius:11px;
+ border:0;
+ cursor:pointer;
+}
+
+.edit{
+ background:#b9ebff;
+}
+
+.delete{
+ background:#ff8da8;
+ color:white;
+}
+
+.receipt-btn{
+ background:#75d6a5;
+ color:white;
+}
+
+.cancel-box{
+ background:#fff0f3;
+ border:1px solid #ffb8c8;
+ color:#c73559;
+ padding:15px;
+ border-radius:15px;
+ margin-top:12px;
+ font-weight:700;
+}
+
+.success-box{
+ background:#edfff5;
+ border:1px solid #b6efcf;
+ color:#278252;
+ padding:15px;
+ border-radius:15px;
+ margin-top:12px;
+ font-weight:700;
+}
+
+label{
+ font-weight:700;
+ font-size:14px;
+}
+
+@media(max-width:700px){
+
+ .cards{
+  grid-template-columns:1fr;
  }
 
- .menuCard{
-  display:block;
-  text-align:center;
-  padding:25px 13px;
- }
-
- .menuIcon{
-  margin:auto auto 13px;
- }
-
- .arrow{
-  display:none;
+ .winner-number,
+ .spin-number{
+  font-size:65px;
  }
 
 }
@@ -538,1982 +382,2282 @@ hr{
 
 <body>
 
-<header class="header">
+<header>
 
- <div class="logo">Giveaway ♡</div>
+<div class="header-row">
 
- <button class="bell" onclick="openNotifications()">
-  🔔
-  <span class="badge" id="badge">0</span>
- </button>
+<div class="logo">
+💎 WYMH Giveaway
+</div>
+
+<button class="bell"
+onclick="openNotifications()">
+🔔
+</button>
+
+</div>
 
 </header>
 
 
 <div class="container">
 
-<!-- HOME -->
 
-<section id="home" class="page active">
+<!-- LOGIN -->
 
- <div class="welcome">
+<div class="login-card">
 
-  <div class="welcomeIcon">🎁</div>
+<h2>
+Telegram နဲ့ Login ဝင်ပါ 💙
+</h2>
 
-  <h1>Giveaway</h1>
+<p>
+Giveaway ပါဝင်ရန် Telegram Account ဖြင့် Login ဝင်ပါ
+</p>
 
-  <p>ကံကောင်းခြင်းလေးတွေ စောင့်နေပါတယ် ♡</p>
-
- </div>
-
-
- <div class="menu">
-
-  <div class="menuCard" onclick="showPage('notDrawn')">
-
-   <div class="menuIcon">🎁</div>
-
-   <div class="menuText">
-    <h3>မဖောက်ရသေးသောဂေ့ဝေးများ</h3>
-    <p>လက်ရှိပါဝင်နိုင်သော Giveaway</p>
-   </div>
-
-   <div class="arrow">›</div>
-
-  </div>
+<div id="telegramLogin"></div>
 
 
-  <div class="menuCard" onclick="showPage('joined')">
+<div id="userBox" class="user-box">
 
-   <div class="menuIcon">💙</div>
+<div class="user-info">
 
-   <div class="menuText">
-    <h3>သင်ပါဝင်ထားသောဂေ့ဝေးများ</h3>
-    <p>ကိုယ်ပါဝင်ထားတဲ့ Giveaway</p>
-   </div>
+<img id="userPhoto"
+class="user-photo"
+src="">
 
-   <div class="arrow">›</div>
+<div>
 
-  </div>
+<b id="userName"></b>
 
+<div id="userUsername"></div>
 
-  <div class="menuCard" onclick="showPage('won')">
+</div>
 
-   <div class="menuIcon">🏆</div>
+</div>
 
-   <div class="menuText">
-    <h3>သင်ပေါက်သောဂေ့ဝေးများ</h3>
-    <p>ကိုယ်ပေါက်ထားတဲ့ Giveaway</p>
-   </div>
+<button class="logout"
+onclick="logout()">
+Logout
+</button>
 
-   <div class="arrow">›</div>
+</div>
 
-  </div>
-
- </div>
+</div>
 
 
- <button class="adminOpen" onclick="openAdminLogin()">
-  Admin Permits
- </button>
+<!-- MAIN MENU -->
 
-</section>
+<div class="cards">
+
+<div class="big-card"
+onclick="showSection('available')">
+
+<div class="icon">
+🎁
+</div>
+
+<b>
+မဖောက်ရသေးသောဂေ့ဝေးများ
+</b>
+
+</div>
 
 
-<!-- NOT DRAWN -->
+<div class="big-card"
+onclick="showSection('joined')">
 
-<section id="notDrawn" class="page">
+<div class="icon">
+🎟️
+</div>
 
- <button class="back" onclick="showPage('home')">
-  ‹ နောက်သို့
- </button>
+<b>
+သင်ပါဝင်ထားသောဂေ့ဝေးများ
+</b>
 
- <h2 class="title">🎁 မဖောက်ရသေးသောဂေ့ဝေးများ</h2>
+</div>
 
- <div id="notDrawnList"></div>
 
-</section>
+<div class="big-card"
+onclick="showSection('won')">
+
+<div class="icon">
+🏆
+</div>
+
+<b>
+သင်ပေါက်သောဂေ့ဝေးများ
+</b>
+
+</div>
+
+</div>
+
+
+<!-- AVAILABLE -->
+
+<div id="available" class="section">
+
+<h3>
+🎁 မဖောက်ရသေးသော Giveaway
+</h3>
+
+<div id="availableList"></div>
+
+</div>
 
 
 <!-- JOINED -->
 
-<section id="joined" class="page">
+<div id="joined" class="section hidden">
 
- <button class="back" onclick="showPage('home')">
-  ‹ နောက်သို့
- </button>
+<h3>
+🎟️ သင်ပါဝင်ထားသော Giveaway
+</h3>
 
- <h2 class="title">💙 သင်ပါဝင်ထားသောဂေ့ဝေးများ</h2>
+<div id="joinedList"></div>
 
- <div id="joinedList"></div>
-
-</section>
+</div>
 
 
 <!-- WON -->
 
-<section id="won" class="page">
+<div id="won" class="section hidden">
 
- <button class="back" onclick="showPage('home')">
-  ‹ နောက်သို့
- </button>
+<h3>
+🏆 သင်ပေါက်သော Giveaway
+</h3>
 
- <h2 class="title">🏆 သင်ပေါက်သောဂေ့ဝေးများ</h2>
-
- <div id="wonList"></div>
-
-</section>
+<div id="wonList"></div>
 
 </div>
 
 
-<!-- NOTIFICATIONS -->
+<button
+class="admin-btn"
+onclick="adminLogin()">
 
-<div class="modal" id="notificationModal">
+👑 Admin Permits
 
- <div class="modalBox">
-
-  <div class="modalHead">
-
-   <h2>🔔 Notifications</h2>
-
-   <button class="close"
-    onclick="closeModal('notificationModal')">
-    ×
-   </button>
-
-  </div>
-
-  <div id="notificationList"></div>
-
- </div>
-
-</div>
-
-
-<!-- JOIN -->
-
-<div class="modal" id="joinModal">
-
- <div class="modalBox">
-
-  <div class="modalHead">
-
-   <h2>🎁 Giveaway ပါဝင်မည်</h2>
-
-   <button class="close"
-    onclick="closeModal('joinModal')">
-    ×
-   </button>
-
-  </div>
-
-  <div id="joinInfo"></div>
-
-
-  <div class="field">
-
-   <label>ဆုလက်ခံမည့်နည်းလမ်း</label>
-
-   <div class="choice">
-
-    <button id="moneyBtn"
-     onclick="selectPrize('money')">
-     💵 Money
-    </button>
-
-    <button id="billBtn"
-     onclick="selectPrize('bill')">
-     📱 Phone Bill
-    </button>
-
-   </div>
-
-  </div>
-
-
-  <div class="field">
-
-   <label>Wave ဖုန်းနံပါတ်</label>
-
-   <input id="wavePhone"
-    type="tel"
-    placeholder="09xxxxxxxxx">
-
-  </div>
-
-
-  <div id="billArea" style="display:none">
-
-   <div class="field">
-
-    <label>Bill အမျိုးအစား</label>
-
-    <div class="billGrid">
-
-     <button class="bill"
-      onclick="selectBill('MPT',this)">
-      🔵 MPT
-     </button>
-
-     <button class="bill"
-      onclick="selectBill('ATOM',this)">
-      🟢 ATOM
-     </button>
-
-     <button class="bill"
-      onclick="selectBill('Ooredoo',this)">
-      🟣 Ooredoo
-     </button>
-
-     <button class="bill"
-      onclick="selectBill('Mytel',this)">
-      🟡 Mytel
-     </button>
-
-    </div>
-
-   </div>
-
-  </div>
-
-
-  <button class="primary" onclick="joinGiveaway()">
-   ပါဝင်မည် ♡
-  </button>
-
- </div>
-
-</div>
-
-
-<!-- GIVEAWAY DETAIL -->
-
-<div class="modal" id="detailModal">
-
- <div class="modalBox">
-
-  <div class="modalHead">
-
-   <h2 id="detailTitle">Giveaway</h2>
-
-   <button class="close"
-    onclick="closeModal('detailModal')">
-    ×
-   </button>
-
-  </div>
-
-  <div id="detailContent"></div>
-
- </div>
-
-</div>
-
-
-<!-- ADMIN LOGIN -->
-
-<div class="modal" id="adminLoginModal">
-
- <div class="modalBox">
-
-  <div class="modalHead">
-
-   <h2>🔐 Admin Permits</h2>
-
-   <button class="close"
-    onclick="closeModal('adminLoginModal')">
-    ×
-   </button>
-
-  </div>
-
-  <div class="field">
-
-   <label>Admin PIN</label>
-
-   <input id="adminPin"
-    type="password"
-    placeholder="PIN">
-
-  </div>
-
-  <button class="primary"
-   onclick="adminLogin()">
-   Login
-  </button>
-
- </div>
-
-</div>
+</button>
 
 
 <!-- ADMIN -->
 
-<div class="modal" id="adminModal">
+<div id="adminPanel"
+class="section hidden">
 
- <div class="modalBox">
+<h3>
+👑 Admin Panel
+</h3>
 
-  <div class="modalHead">
+<button
+class="primary"
+onclick="openCreate()">
 
-   <h2>⚙️ Admin Panel</h2>
+＋ Giveaway အသစ်လုပ်မည်
 
-   <button class="close"
-    onclick="closeModal('adminModal')">
-    ×
-   </button>
+</button>
 
-  </div>
+<div
+id="adminList"
+style="margin-top:15px">
+</div>
 
+</div>
 
-  <button class="primary"
-   onclick="openCreate()">
-   ＋ Giveaway အသစ်လုပ်မည်
-  </button>
-
-
-  <hr>
-
-  <h2 style="color:#438ca9;margin-bottom:12px">
-   🎁 Giveaway များ
-  </h2>
-
-  <div id="adminList"></div>
+</div>
 
 
-  <hr>
+<!-- JOIN MODAL -->
 
-  <h2 style="color:#438ca9;margin-bottom:12px">
-   🏆 Giveaway ပေါက်သူများ
-  </h2>
+<div id="joinModal" class="modal">
 
-  <div id="winnerList"></div>
+<div class="modal-box">
 
- </div>
+<button
+class="close"
+onclick="closeModal('joinModal')">
+×
+</button>
+
+<h2>
+🎁 Giveaway ပါဝင်မည်
+</h2>
+
+<div id="joinInfo"></div>
+
+
+<label>
+Telegram Username
+</label>
+
+<input
+id="telegramUsername"
+type="text"
+placeholder="@yourusername">
+
+
+<label>
+ဆုလက်ခံအမျိုးအစား
+</label>
+
+<div class="option-grid">
+
+<div
+class="option"
+id="moneyOption"
+onclick="selectType('money')">
+
+💵 Money
+
+</div>
+
+<div
+class="option"
+id="phoneOption"
+onclick="selectType('phone')">
+
+📱 Phone Bill
+
+</div>
+
+</div>
+
+
+<div id="phoneArea"
+class="hidden">
+
+<label>
+Operator
+</label>
+
+<select id="operator">
+
+<option value="">
+ရွေးပါ
+</option>
+
+<option value="MPT">
+MPT
+</option>
+
+<option value="ATOM">
+ATOM
+</option>
+
+<option value="Ooredoo">
+Ooredoo
+</option>
+
+<option value="Mytel">
+Mytel
+</option>
+
+</select>
+
+</div>
+
+
+<label>
+Wave ဖုန်းနံပါတ်
+</label>
+
+<input
+id="waveNumber"
+type="tel"
+placeholder="09xxxxxxxxx">
+
+
+<div class="notice">
+
+⚠️ Giveaway ပေါက်ပါက Telegram Channel
+ဝင်ထားမှုကို စစ်ဆေးပါမည်။
+
+<br><br>
+
+Channel မဝင်ထားပါက
+<strong>
+Cancel
+</strong>
+ဖြစ်ပါမည်။
+
+</div>
+
+
+<button
+class="primary"
+onclick="submitJoin()">
+
+ပါဝင်မည်
+
+</button>
+
+</div>
 
 </div>
 
 
 <!-- CREATE -->
 
-<div class="modal" id="createModal">
+<div id="createModal" class="modal">
 
- <div class="modalBox">
+<div class="modal-box">
 
-  <div class="modalHead">
+<button
+class="close"
+onclick="closeModal('createModal')">
+×
+</button>
 
-   <h2>✨ Giveaway အသစ်</h2>
+<h2 id="formTitle">
+Giveaway အသစ်
+</h2>
 
-   <button class="close"
-    onclick="closeModal('createModal')">
-    ×
-   </button>
+<label>
+Telegram Channel Link
+</label>
 
-  </div>
-
-
-  <div class="field">
-
-   <label>Telegram Channel Link &gt;</label>
-
-   <input id="createChannel"
-    placeholder="https://t.me/yourchannel">
-
-  </div>
+<input
+id="gChannel"
+placeholder="https://t.me/example">
 
 
-  <div class="field">
+<label>
+Giveaway Amount
+</label>
 
-   <label>Giveaway Amount &gt;</label>
-
-   <input id="createAmount"
-    type="number"
-    placeholder="2000">
-
-  </div>
-
-
-  <div class="field">
-
-   <label>Stop Member &gt;</label>
-
-   <input id="createStop"
-    type="number"
-    placeholder="20">
-
-  </div>
+<input
+id="gAmount"
+type="number"
+placeholder="2000">
 
 
-  <div class="field">
+<label>
+Stop Member
+</label>
 
-   <label>Giveaway Time &gt;</label>
-
-   <input id="createTime"
-    type="datetime-local">
-
-  </div>
+<input
+id="gStop"
+type="number"
+placeholder="20">
 
 
-  <button class="primary"
-   onclick="createGiveaway()">
-   Giveaway ဖန်တီးမည်
-  </button>
+<label>
+Giveaway Time
+</label>
 
- </div>
+<input
+id="gTime"
+type="datetime-local">
+
+
+<button
+class="primary"
+onclick="saveGiveaway()">
+
+သိမ်းမည်
+
+</button>
+
+</div>
 
 </div>
 
 
-<!-- EDIT -->
+<!-- SPIN -->
 
-<div class="modal" id="editModal">
+<div id="spinModal" class="modal">
 
- <div class="modalBox">
+<div class="modal-box">
 
-  <div class="modalHead">
+<h2 style="text-align:center">
+🎰 Giveaway Spin
+</h2>
 
-   <h2>✏️ Giveaway Edit</h2>
+<div
+id="spinNumber"
+class="spin-number">
+0
+</div>
 
-   <button class="close"
-    onclick="closeModal('editModal')">
-    ×
-   </button>
+<div
+id="spinStatus"
+style="text-align:center">
+Spinning...
+</div>
 
-  </div>
+<button
+id="replayButton"
+class="primary hidden"
+onclick="replaySpin()">
 
-  <input id="editId" type="hidden">
+🔄 Replay Spin
 
+</button>
 
-  <div class="field">
+<button
+id="closeSpinButton"
+class="primary hidden"
+style="margin-top:10px"
+onclick="closeModal('spinModal');render()">
 
-   <label>Telegram Channel Link &gt;</label>
+Close
 
-   <input id="editChannel">
+</button>
 
-  </div>
+</div>
 
-
-  <div class="field">
-
-   <label>Giveaway Amount &gt;</label>
-
-   <input id="editAmount"
-    type="number">
-
-  </div>
-
-
-  <div class="field">
-
-   <label>Stop Member &gt;</label>
-
-   <input id="editStop"
-    type="number">
-
-  </div>
+</div>
 
 
-  <div class="field">
+<!-- NOTIFICATIONS -->
 
-   <label>Giveaway Time &gt;</label>
+<div id="notificationModal" class="modal">
 
-   <input id="editTime"
-    type="datetime-local">
+<div class="modal-box">
 
-  </div>
+<button
+class="close"
+onclick="closeModal('notificationModal')">
+×
+</button>
 
+<h2>
+🔔 Notifications
+</h2>
 
-  <button class="primary"
-   onclick="saveEdit()">
-   Save Changes
-  </button>
+<div id="notificationList"></div>
 
- </div>
+</div>
 
 </div>
 
 
 <!-- RECEIPT -->
 
-<div class="modal" id="receiptModal">
+<div id="receiptModal" class="modal">
 
- <div class="modalBox">
+<div class="modal-box">
 
-  <div class="modalHead">
+<button
+class="close"
+onclick="closeModal('receiptModal')">
+×
+</button>
 
-   <h2>🧾 Receipt</h2>
+<h2>
+🧾 Receipt
+</h2>
 
-   <button class="close"
-    onclick="closeModal('receiptModal')">
-    ×
-   </button>
+<input
+id="receiptFile"
+type="file"
+accept="image/*">
 
-  </div>
+<button
+class="primary"
+onclick="saveReceipt()">
 
-  <input id="receiptId" type="hidden">
+Receipt Upload
 
-  <div class="field">
+</button>
 
-   <label>ငွေလွှဲပြေစာပုံ</label>
-
-   <input id="receiptFile"
-    type="file"
-    accept="image/*">
-
-  </div>
-
-  <button class="primary"
-   onclick="saveReceipt()">
-   ပြေစာတင်မည်
-  </button>
-
- </div>
+</div>
 
 </div>
 
 
-<!-- MUSIC -->
-
-<video
- id="music"
- src="./VID_20260906_142604_333.mp4"
- loop
- playsinline
- preload="auto"
- style="display:none">
-</video>
-
-
 <script>
 
-const ADMIN_PIN="2013";
+/* =========================
+CONFIG
+========================= */
 
-let giveaways=
- JSON.parse(localStorage.getItem("giveaways")||"[]");
+const ADMIN_PIN = "2013";
 
-let notifications=
- JSON.parse(localStorage.getItem("notifications")||"[]");
-
-let userId=
- localStorage.getItem("giveawayUserId");
-
-if(!userId){
-
- userId=
- "USER-"+Date.now()+"-"+Math.random();
-
- localStorage.setItem(
-  "giveawayUserId",
-  userId
- );
-
-}
-
-let current=null;
-
-let selectedPrize="";
-
-let selectedBill="";
+const TELEGRAM_BOT =
+"YOUR_BOT_USERNAME";
 
 
-/* MUSIC */
+/* =========================
+DATA
+========================= */
 
-function musicStart(){
-
- const m=document.getElementById("music");
-
- m.loop=true;
-
- m.play().catch(()=>{});
-
-}
-
-window.addEventListener("load",musicStart);
-
-document.addEventListener("click",musicStart);
-
-document.addEventListener(
- "touchstart",
- musicStart,
- {passive:true}
+let giveaways =
+JSON.parse(
+localStorage.getItem("giveaways") || "[]"
 );
 
+let notifications =
+JSON.parse(
+localStorage.getItem("notifications") || "[]"
+);
 
-/* SAVE */
+let currentUser =
+JSON.parse(
+localStorage.getItem("telegramUser") || "null"
+);
+
+let currentGiveaway = null;
+
+let selectedType = null;
+
+let editingId = null;
+
+let receiptGiveaway = null;
+
+
+/* =========================
+DEMO
+========================= */
+
+if(giveaways.length === 0){
+
+giveaways.push({
+
+id:Date.now(),
+
+amount:2000,
+
+channel:"https://t.me/",
+
+stop:20,
+
+time:new Date().toISOString(),
+
+participants:[],
+
+winner:null,
+
+spinTime:null,
+
+winTime:null,
+
+receipt:null
+
+});
+
+save();
+
+}
+
+
+/* =========================
+SAVE
+========================= */
 
 function save(){
 
- localStorage.setItem(
-  "giveaways",
-  JSON.stringify(giveaways)
- );
+localStorage.setItem(
+"giveaways",
+JSON.stringify(giveaways)
+);
 
- localStorage.setItem(
-  "notifications",
-  JSON.stringify(notifications)
- );
-
-}
-
-
-/* PAGE */
-
-function showPage(id){
-
- document.querySelectorAll(".page")
- .forEach(x=>x.classList.remove("active"));
-
- document.getElementById(id)
- .classList.add("active");
-
- render();
+localStorage.setItem(
+"notifications",
+JSON.stringify(notifications)
+);
 
 }
 
 
-/* MODAL */
+/* =========================
+TELEGRAM LOGIN
+========================= */
 
-function closeModal(id){
+function onTelegramAuth(user){
 
- document.getElementById(id)
- .classList.remove("show");
+currentUser={
+
+id:String(user.id),
+
+first_name:user.first_name || "",
+
+last_name:user.last_name || "",
+
+username:user.username || "",
+
+photo_url:user.photo_url || ""
+
+};
+
+localStorage.setItem(
+"telegramUser",
+JSON.stringify(currentUser)
+);
+
+addNotification(
+"Telegram Account Login ဝင်ပြီးပါပြီ ✅"
+);
+
+updateLoginUI();
+
+render();
 
 }
 
 
-/* NOTIFICATION */
+/* =========================
+LOGIN UI
+========================= */
 
-function notify(text,extra=""){
+function updateLoginUI(){
 
- notifications.unshift({
+const login=
+document.getElementById(
+"telegramLogin"
+);
 
-  text:text,
+const box=
+document.getElementById(
+"userBox"
+);
 
-  extra:extra,
+if(currentUser){
 
-  time:new Date().toLocaleString()
+login.style.display="none";
 
- });
+box.style.display="flex";
 
- notifications=
- notifications.slice(0,60);
+document.getElementById(
+"userName"
+).textContent=
+(
+currentUser.first_name+
+" "+
+currentUser.last_name
+).trim();
 
- save();
+document.getElementById(
+"userUsername"
+).textContent=
+currentUser.username
+?"@"+currentUser.username
+:"Telegram Account";
 
- updateBadge();
+document.getElementById(
+"userPhoto"
+).src=
+currentUser.photo_url ||
+"https://via.placeholder.com/45";
+
+}else{
+
+login.style.display="flex";
+
+box.style.display="none";
+
+}
 
 }
 
 
-function updateBadge(){
+/* =========================
+LOGOUT
+========================= */
 
- document.getElementById("badge")
- .textContent=
- notifications.length;
+function logout(){
+
+if(
+!confirm(
+"Telegram Account မှ Logout ထွက်မလား?"
+)
+)return;
+
+currentUser=null;
+
+localStorage.removeItem(
+"telegramUser"
+);
+
+updateLoginUI();
+
+render();
+
+}
+
+
+/* =========================
+NOTIFICATION
+========================= */
+
+function addNotification(text){
+
+notifications.unshift({
+
+text:text,
+
+time:new Date().toLocaleString()
+
+});
+
+notifications=
+notifications.slice(0,100);
+
+save();
 
 }
 
 
 function openNotifications(){
 
- const box=
- document.getElementById("notificationList");
+const box=
+document.getElementById(
+"notificationList"
+);
 
- if(!notifications.length){
+box.innerHTML="";
 
-  box.innerHTML=`
-   <div class="empty">
-    🔔 Notification မရှိသေးပါ။
-   </div>
-  `;
+if(!notifications.length){
 
- }else{
+box.innerHTML=
+"<p>Notification မရှိသေးပါ။</p>";
 
-  box.innerHTML=
-  notifications.map(n=>`
+}else{
 
-   <div class="notify">
+notifications.forEach(n=>{
 
-    <b>🔔 ${safe(n.text)}</b>
+box.innerHTML+=`
 
-    ${n.extra?
-     `<small>${safe(n.extra)}</small>`:""}
+<div class="notification">
 
-    <small>${safe(n.time)}</small>
+<b>
+${escapeHTML(n.text)}
+</b>
 
-   </div>
+<div class="meta">
+${escapeHTML(n.time)}
+</div>
 
-  `).join("");
+</div>
 
- }
+`;
 
- document.getElementById(
-  "notificationModal"
- ).classList.add("show");
+});
+
+}
+
+openModal(
+"notificationModal"
+);
 
 }
 
 
-/* CARD */
+/* =========================
+SECTION
+========================= */
 
-function card(g){
+function showSection(id){
 
- const count=g.participants.length;
+[
+"available",
+"joined",
+"won"
+].forEach(x=>{
 
- return `
+document
+.getElementById(x)
+.classList.add("hidden");
 
- <div class="card">
+});
 
-  <div class="top">
-
-   <div class="amount">
-    ${Number(g.amount).toLocaleString()}Ks
-   </div>
-
-   <div class="status ${g.finished?"closed":""}">
-    ${g.finished?"ပြီးပါပြီ":"ဖွင့်ထားသည်"}
-   </div>
-
-  </div>
-
-
-  <div class="info">
-
-   👥 ပါဝင်သူ — ${count}/${g.stopMember}<br>
-
-   ⏰ အချိန် — ${formatTime(g.time)}<br>
-
-   ${
-    g.spinning
-    ?"🎲 Spin လုပ်နေပါပြီ..."
-    :g.finished
-    ?"🏆 Winner ထွက်ပြီးပါပြီ"
-    :"💙 ပါဝင်နိုင်ပါသေးတယ်"
-   }
-
-  </div>
-
-
-  <button class="primary"
-   onclick="openGiveaway('${g.id}')">
-
-   ${g.finished?
-    "🏆 Winner ကြည့်မည်":
-    "ပါဝင်မည် ♡"}
-
-  </button>
-
- </div>
-
- `;
+document
+.getElementById(id)
+.classList.remove("hidden");
 
 }
 
 
-/* RENDER */
+/* =========================
+RENDER
+========================= */
 
 function render(){
 
- const notDrawn=
- document.getElementById("notDrawnList");
+renderAvailable();
 
- const joined=
- document.getElementById("joinedList");
+renderJoined();
 
- const won=
- document.getElementById("wonList");
+renderWon();
 
+renderAdmin();
 
- const open=
- giveaways.filter(g=>!g.finished);
-
- const myJoined=
- giveaways.filter(g=>
-  g.participants.some(p=>p.userId===userId)
- );
-
- const myWon=
- giveaways.filter(g=>
-  g.winner &&
-  g.winner.userId===userId
- );
-
-
- notDrawn.innerHTML=
- open.length
- ?open.map(card).join("")
- :emptyText("🎁 Giveaway မရှိသေးပါ။");
-
-
- joined.innerHTML=
- myJoined.length
- ?myJoined.map(card).join("")
- :emptyText("💙 ပါဝင်ထားတဲ့ Giveaway မရှိသေးပါ။");
-
-
- won.innerHTML=
- myWon.length
- ?myWon.map(g=>wonCard(g)).join("")
- :emptyText("🏆 ပေါက်ထားတဲ့ Giveaway မရှိသေးပါ။");
-
-
- renderAdmin();
-
- updateBadge();
+updateLoginUI();
 
 }
 
 
-function emptyText(t){
+/* =========================
+AVAILABLE
+========================= */
 
- return `<div class="empty">${t}</div>`;
+function renderAvailable(){
+
+const box=
+document.getElementById(
+"availableList"
+);
+
+box.innerHTML="";
+
+giveaways
+.filter(g=>!g.winner)
+.forEach(g=>{
+
+const count=
+g.participants.length;
+
+const percent=
+Math.min(
+100,
+(count/g.stop)*100
+);
+
+let joined=false;
+
+if(currentUser){
+
+joined=
+g.participants.some(
+p=>
+String(p.userId)===
+String(currentUser.id)
+);
+
+}
+
+box.innerHTML+=`
+
+<div class="giveaway">
+
+<div class="giveaway-title">
+${g.amount} Ks Giveaway
+</div>
+
+<div class="meta">
+👥 ${count} / ${g.stop} Members
+</div>
+
+<div class="progress">
+
+<span
+style="width:${percent}%">
+</span>
+
+</div>
+
+<div class="meta">
+⏰ ${formatDate(g.time)}
+</div>
+
+<a
+href="${g.channel}"
+target="_blank">
+
+Telegram Channel Join →
+
+</a>
+
+<br><br>
+
+<button
+class="primary"
+${joined?"disabled":""}
+onclick="openJoin(${g.id})">
+
+${
+joined
+?"ပါဝင်ထားပါပြီ ✓"
+:"ပါဝင်မည်"
+}
+
+</button>
+
+</div>
+
+`;
+
+});
 
 }
 
 
-function wonCard(g){
+/* =========================
+JOINED
+========================= */
 
- return `
+function renderJoined(){
 
- <div class="card">
+const box=
+document.getElementById(
+"joinedList"
+);
 
-  <div class="winnerBox">
+box.innerHTML="";
 
-   <div class="winnerSmall">
-    ${Number(g.amount).toLocaleString()}Ks Giveaway
-   </div>
+if(!currentUser){
 
-   <div class="winnerNumber">
-    #${g.winner.number}
-   </div>
+box.innerHTML=
+"<p>အရင်ဆုံး Telegram Login ဝင်ပါ။</p>";
 
-   <div class="winnerSmall">
-    🎉 Congratulations!
-   </div>
+return;
 
-   <div class="timeBox">
+}
 
-    🕐 Spin Time<br>
-    ${formatTime(g.spinTime)}
+giveaways.forEach(g=>{
 
-    <br><br>
+const p=
+g.participants.find(
+x=>
+String(x.userId)===
+String(currentUser.id)
+);
 
-    🏆 Winner Time<br>
-    ${formatTime(g.winTime)}
+if(!p)return;
 
-   </div>
+box.innerHTML+=`
 
-   ${
-    g.receipt
-    ?`<img class="receipt" src="${g.receipt}">`
-    :""
-   }
+<div class="giveaway">
 
-  </div>
+<div class="giveaway-title">
 
- </div>
+${g.amount} Ks Giveaway
 
- `;
+</div>
+
+<div class="meta">
+
+Participant Number:
+<strong>
+#${p.number}
+</strong>
+
+<br>
+
+Telegram:
+@${escapeHTML(p.username)}
+
+<br>
+
+Prize:
+${escapeHTML(p.type)}
+${
+p.operator
+?" - "+escapeHTML(p.operator)
+:""
+}
+
+<br>
+
+Joined:
+${formatDate(p.time)}
+
+</div>
+
+<b>
+ပါဝင်ထားပါပြီ ✓
+</b>
+
+</div>
+
+`;
+
+});
 
 }
 
 
-/* OPEN GIVEAWAY */
+/* =========================
+WON
+========================= */
 
-function openGiveaway(id){
+function renderWon(){
 
- current=
- giveaways.find(g=>g.id===id);
+const box=
+document.getElementById(
+"wonList"
+);
 
- if(!current)return;
+box.innerHTML="";
 
- if(current.finished){
+if(!currentUser){
 
-  showWinner(current);
+box.innerHTML=
+"<p>အရင်ဆုံး Telegram Login ဝင်ပါ။</p>";
 
-  return;
+return;
 
- }
+}
 
+giveaways.forEach(g=>{
 
- document.getElementById("joinInfo").innerHTML=`
-
- <div class="info">
-
-  💰 ဆုငွေ —
-  <b>
-   ${Number(current.amount).toLocaleString()}Ks
-  </b>
-
-  <br>
-
-  👥 Members —
-  ${current.participants.length}
-  /
-  ${current.stopMember}
-
-  <br>
-
-  ⏰ ${formatTime(current.time)}
-
-  <br><br>
-
-  📢 Telegram Channel
-
-  <br>
-
-  <a href="${safeAttr(current.channel)}"
-   target="_blank"
-   style="color:#4da5ce;font-weight:900">
-
-   Channel Join &gt;
-
-  </a>
-
- </div>
-
- `;
+if(
+!g.winner ||
+String(g.winner.userId)!==
+String(currentUser.id)
+)return;
 
 
- selectedPrize="";
+if(g.winner.cancelled){
 
- selectedBill="";
+box.innerHTML+=`
 
- document.getElementById("wavePhone").value="";
+<div class="winner">
 
- document.getElementById("moneyBtn")
- .classList.remove("selected");
+<h3>
+😔 Giveaway Cancelled
+</h3>
 
- document.getElementById("billBtn")
- .classList.remove("selected");
+<div class="cancel-box">
 
- document.getElementById("billArea")
- .style.display="none";
+ချန်နယ်မဝင်ထားသောကြောင့် Cancel ❌
 
+</div>
 
- document.getElementById("joinModal")
- .classList.add("show");
+<p class="meta">
+Winner #${g.winner.number}
+</p>
+
+</div>
+
+`;
+
+return;
 
 }
 
 
-function selectPrize(type){
+box.innerHTML+=`
 
- selectedPrize=type;
+<div class="winner">
 
- document.getElementById("moneyBtn")
- .classList.toggle(
-  "selected",
-  type==="money"
- );
+<h3>
+🎉 Congratulations!
+</h3>
 
- document.getElementById("billBtn")
- .classList.toggle(
-  "selected",
-  type==="bill"
- );
+<div class="winner-number">
+#${g.winner.number}
+</div>
 
- document.getElementById("billArea")
- .style.display=
-  type==="bill"
-  ?"block"
-  :"none";
+<p>
+${g.amount} Ks Giveaway
+</p>
+
+<p class="meta">
+Winner:
+@${escapeHTML(g.winner.username)}
+</p>
+
+<p class="meta">
+Winner Time:
+${formatDate(g.winTime)}
+</p>
+
+${
+g.receipt
+?`
+<div class="success-box">
+🧾 Receipt ရရှိပါပြီ
+</div>
+
+<img
+class="receipt"
+src="${g.receipt}">
+`
+:`
+<div class="notice">
+Prize Transfer မလုပ်ရသေးပါ။
+</div>
+`
+}
+
+<button
+class="primary"
+onclick="openReplay(${g.id})">
+
+🔄 Spin ပြန်ကြည့်မည်
+
+</button>
+
+</div>
+
+`;
+
+});
 
 }
 
 
-function selectBill(type,el){
+/* =========================
+OPEN JOIN
+========================= */
 
- selectedBill=type;
+function openJoin(id){
 
- document.querySelectorAll(".bill")
- .forEach(x=>
-  x.classList.remove("selected")
- );
+if(!currentUser){
 
- el.classList.add("selected");
+alert(
+"အရင်ဆုံး Telegram နဲ့ Login ဝင်ပါ။"
+);
+
+return;
+
+}
+
+currentGiveaway=
+giveaways.find(
+g=>g.id===id
+);
+
+if(!currentGiveaway)return;
+
+const already=
+currentGiveaway.participants.some(
+p=>
+String(p.userId)===
+String(currentUser.id)
+);
+
+if(already){
+
+alert(
+"ဒီ Telegram Account နဲ့ ပါဝင်ပြီးသားပါ။"
+);
+
+return;
+
+}
+
+document.getElementById(
+"joinInfo"
+).innerHTML=`
+
+<div class="notice">
+
+<b>
+${currentGiveaway.amount} Ks Giveaway
+</b>
+
+<br>
+
+Member:
+${currentGiveaway.participants.length}
+/
+${currentGiveaway.stop}
+
+</div>
+
+`;
+
+document.getElementById(
+"telegramUsername"
+).value=
+currentUser.username
+?"@"+currentUser.username
+:"";
+
+document.getElementById(
+"waveNumber"
+).value="";
+
+document.getElementById(
+"operator"
+).value="";
+
+selectedType=null;
+
+document.getElementById(
+"moneyOption"
+).classList.remove("active");
+
+document.getElementById(
+"phoneOption"
+).classList.remove("active");
+
+document.getElementById(
+"phoneArea"
+).classList.add("hidden");
+
+openModal("joinModal");
 
 }
 
 
-/* JOIN */
+/* =========================
+SELECT PRIZE
+========================= */
 
-function joinGiveaway(){
+function selectType(type){
 
- if(!current)return;
+selectedType=type;
 
- if(current.participants.some(
-  p=>p.userId===userId
- )){
+document.getElementById(
+"moneyOption"
+).classList.remove("active");
 
-  alert("ဒီ Giveaway မှာ ပါဝင်ထားပြီးသားပါ။");
-
-  return;
-
- }
-
-
- if(!selectedPrize){
-
-  alert("Money သို့မဟုတ် Phone Bill ရွေးပါ။");
-
-  return;
-
- }
+document.getElementById(
+"phoneOption"
+).classList.remove("active");
 
 
- const phone=
- document.getElementById("wavePhone")
- .value.trim();
+if(type==="money"){
 
+document.getElementById(
+"moneyOption"
+).classList.add("active");
 
- if(!phone){
+document.getElementById(
+"phoneArea"
+).classList.add("hidden");
 
-  alert("Wave ဖုန်းနံပါတ် ထည့်ပါ။");
+}else{
 
-  return;
+document.getElementById(
+"phoneOption"
+).classList.add("active");
 
- }
+document.getElementById(
+"phoneArea"
+).classList.remove("hidden");
 
-
- if(selectedPrize==="bill"&&!selectedBill){
-
-  alert("Bill အမျိုးအစား ရွေးပါ။");
-
-  return;
-
- }
-
-
- const number=
- current.participants.length+1;
-
-
- current.participants.push({
-
-  userId:userId,
-
-  number:number,
-
-  phone:phone,
-
-  type:selectedPrize,
-
-  bill:selectedBill,
-
-  joinedAt:new Date().toISOString()
-
- });
-
-
- save();
-
-
- notify(
-
-  `${Number(current.amount).toLocaleString()}Ks Giveaway မှာ ပါဝင်ပြီးပါပြီ`,
-
-  `Participant #${number}`
-
- );
-
-
- closeModal("joinModal");
-
- render();
-
- alert("🎉 Giveaway မှာ ပါဝင်ပြီးပါပြီ။");
-
-
- /*
-   IMPORTANT:
-   Stop Member = 20
-   Participant = 20
-   ဖြစ်တာနဲ့ တန်း Spin
- */
-
- if(
-  current.participants.length
-  >=Number(current.stopMember)
- ){
-
-  startSpin(current.id);
-
- }
+}
 
 }
 
 
-/* SPIN */
+/* =========================
+SUBMIT JOIN
+========================= */
 
-function startSpin(id){
+function submitJoin(){
 
- const g=
- giveaways.find(x=>x.id===id);
+if(!currentUser){
 
- if(!g||g.finished||g.spinning)return;
+alert(
+"Telegram Login လုပ်ပါ။"
+);
 
+return;
 
- if(
-  g.participants.length
-  <Number(g.stopMember)
- ){
+}
 
-  return;
+const username=
+document.getElementById(
+"telegramUsername"
+).value.trim();
 
- }
+if(!/^@[A-Za-z0-9_]{5,32}$/.test(username)){
 
+alert(
+"Telegram Username ကို @ နဲ့ထည့်ပါ။"
+);
 
- g.spinning=true;
-
- g.spinTime=
-  new Date().toISOString();
-
- save();
-
- notify(
-
-  `${Number(g.amount).toLocaleString()}Ks Giveaway Spin စတင်ပါပြီ`,
-
-  `${g.participants.length} ယောက် ပြည့်ပါပြီ`
-
- );
-
-
- /*
-   Winner number ကို
-   1 မှ Stop Member အထိ ရွေးမယ်။
-
-   ဥပမာ Stop Member 20
-   ဆိုရင် Winner = 1 ~ 20
- */
-
- const max=
-  Number(g.stopMember);
-
- const winnerNumber=
-  Math.floor(
-   Math.random()*max
-  )+1;
-
-
- const winner=
-  g.participants[winnerNumber-1];
-
-
- if(!winner){
-
-  g.spinning=false;
-
-  save();
-
-  return;
-
- }
-
-
- g.winner={
-
-  number:winnerNumber,
-
-  userId:winner.userId,
-
-  phone:winner.phone,
-
-  type:winner.type,
-
-  bill:winner.bill
-
- };
-
-
- /*
-   4 seconds Spin Animation
- */
-
- let count=0;
-
- const interval=
- setInterval(()=>{
-
-  count++;
-
-  renderSpinModal(
-   g,
-   Math.floor(Math.random()*max)+1,
-   true
-  );
-
-  if(count>=18){
-
-   clearInterval(interval);
-
-   setTimeout(()=>{
-
-    g.spinning=false;
-
-    g.finished=true;
-
-    g.winTime=
-     new Date().toISOString();
-
-    save();
-
-    notify(
-
-     `${Number(g.amount).toLocaleString()}Ks Giveaway ဖောက်ပြီးပါပြီ`,
-
-     `🏆 Winner #${winnerNumber}`
-
-    );
-
-    render();
-
-    renderSpinModal(
-     g,
-     winnerNumber,
-     false
-    );
-
-   },300);
-
-  }
-
- },220);
-
-
- openSpinModal(g);
+return;
 
 }
 
 
-function openSpinModal(g){
+if(!selectedType){
 
- document.getElementById(
-  "detailTitle"
- ).textContent=
- `${Number(g.amount).toLocaleString()}Ks Giveaway`;
+alert(
+"ဆုလက်ခံအမျိုးအစား ရွေးပါ။"
+);
 
- document.getElementById(
-  "detailModal"
- ).classList.add("show");
+return;
 
 }
 
 
-function renderSpinModal(g,num,spinning){
+const operator=
+document.getElementById(
+"operator"
+).value;
 
- document.getElementById(
-  "detailContent"
- ).innerHTML=`
+if(
+selectedType==="phone" &&
+!operator
+){
 
- <div class="spinBox">
+alert(
+"Phone Bill Operator ရွေးပါ။"
+);
 
-  <div class="spinCircle ${spinning?"spinning":""}">
-   ${num}
-  </div>
-
-  ${
-   spinning
-   ?`
-    <div class="spinLabel">
-     🎲 Number လှည့်နေပါတယ်...
-    </div>
-    `
-   :`
-    <div class="winnerBox">
-
-     <div class="winnerSmall">
-      🎉 WINNER
-     </div>
-
-     <div class="winnerNumber">
-      #${num}
-     </div>
-
-     <div class="winnerSmall">
-      ပေါက်နံပါတ်
-     </div>
-
-     <div class="timeBox">
-
-      🕐 Spin Time<br>
-      ${formatTime(g.spinTime)}
-
-      <br><br>
-
-      🏆 Winner Time<br>
-      ${formatTime(g.winTime)}
-
-     </div>
-
-
-     <button class="secondary"
-      onclick="replaySpin('${g.id}')">
-
-      ▶️ Spin ပြန်ကြည့်မည်
-
-     </button>
-
-    </div>
-   `
-  }
-
- </div>
-
- `;
+return;
 
 }
 
 
-function showWinner(g){
+const wave=
+document.getElementById(
+"waveNumber"
+).value.trim();
 
- openSpinModal(g);
+if(
+!/^09\d{7,10}$/.test(wave)
+){
 
- renderSpinModal(
-  g,
-  g.winner.number,
-  false
- );
+alert(
+"Wave ဖုန်းနံပါတ် မှန်အောင်ထည့်ပါ။"
+);
+
+return;
+
+}
+
+
+const g=currentGiveaway;
+
+
+const already=
+g.participants.some(
+p=>
+String(p.userId)===
+String(currentUser.id)
+);
+
+if(already){
+
+alert(
+"ဒီ Telegram Account နဲ့ ပါဝင်ပြီးသားပါ။"
+);
+
+return;
 
 }
 
 
 /*
- Replay:
- Winner တူတူကို
- animation ပြန်ပြမယ်။
+  Participant Number
+  1,2,3,4...
 */
 
-function replaySpin(id){
-
- const g=
- giveaways.find(x=>x.id===id);
-
- if(!g||!g.winner)return;
+const participantNumber=
+g.participants.length+1;
 
 
- let count=0;
+const participant={
 
- const max=
-  Number(g.stopMember);
+number:participantNumber,
+
+userId:String(currentUser.id),
+
+name:
+(
+currentUser.first_name+
+" "+
+currentUser.last_name
+).trim(),
+
+username:
+username.replace("@",""),
+
+type:
+selectedType==="money"
+?"Money"
+:"Phone Bill",
+
+operator:
+selectedType==="phone"
+?operator
+:"",
+
+wave:wave,
+
+/*
+  ဒီ field ကို backend က
+  Telegram Channel membership
+  စစ်ပြီး true/false ပြန်သတ်မှတ်ပေးရမယ်။
+*/
+
+channelJoined:false,
+
+time:new Date().toISOString()
+
+};
 
 
- const interval=
- setInterval(()=>{
-
-  count++;
-
-  renderSpinModal(
-   g,
-   Math.floor(Math.random()*max)+1,
-   true
-  );
+g.participants.push(
+participant
+);
 
 
-  if(count>=18){
+addNotification(
+`${g.amount}Ks Giveaway ထဲ #${participantNumber} အဖြစ် ပါဝင်ပြီးပါပြီ 🎟️`
+);
 
-   clearInterval(interval);
 
-   setTimeout(()=>{
+closeModal("joinModal");
 
-    renderSpinModal(
-     g,
-     g.winner.number,
-     false
-    );
+save();
 
-   },300);
+render();
 
-  }
 
- },220);
+/*
+ EXACT STOP MEMBER
+*/
+
+if(
+g.participants.length===
+Number(g.stop)
+){
+
+setTimeout(
+()=>startSpin(g.id),
+400
+);
+
+}
 
 }
 
 
-/* ADMIN LOGIN */
+/* =========================
+SPIN
+========================= */
 
-function openAdminLogin(){
+function startSpin(id){
 
- document.getElementById("adminPin").value="";
+const g=
+giveaways.find(
+x=>x.id===id
+);
 
- document.getElementById(
-  "adminLoginModal"
- ).classList.add("show");
+if(!g || g.winner)return;
+
+if(
+g.participants.length<
+Number(g.stop)
+)return;
+
+currentGiveaway=g;
+
+g.spinTime=
+new Date().toISOString();
+
+save();
+
+addNotification(
+`${g.amount}Ks Giveaway Spin စတင်ပါပြီ 🎰`
+);
+
+document.getElementById(
+"spinNumber"
+).textContent="0";
+
+document.getElementById(
+"spinStatus"
+).textContent=
+"Spinning...";
+
+document.getElementById(
+"replayButton"
+).classList.add("hidden");
+
+document.getElementById(
+"closeSpinButton"
+).classList.add("hidden");
+
+openModal("spinModal");
+
+animateSpin(g,false);
 
 }
 
+
+/* =========================
+ANIMATE
+========================= */
+
+function animateSpin(g,replay){
+
+let count=0;
+
+const total=22;
+
+const finalWinner=
+g.winner
+?g.winner.number
+:Math.floor(
+Math.random()*g.stop
+)+1;
+
+
+const timer=
+setInterval(()=>{
+
+count++;
+
+const number=
+count>=total
+?finalWinner
+:Math.floor(
+Math.random()*g.stop
+)+1;
+
+document.getElementById(
+"spinNumber"
+).textContent=
+"#"+number;
+
+
+if(count>=total){
+
+clearInterval(timer);
+
+finishSpin(
+g,
+finalWinner,
+replay
+);
+
+}
+
+},150);
+
+}
+
+
+/* =========================
+FINISH SPIN
+========================= */
+
+function finishSpin(
+g,
+number,
+replay
+){
+
+if(!g.winner){
+
+const winnerParticipant=
+g.participants.find(
+p=>
+Number(p.number)===
+Number(number)
+);
+
+
+if(!winnerParticipant)return;
+
+
+g.winner={
+
+number:number,
+
+userId:
+winnerParticipant.userId,
+
+name:
+winnerParticipant.name,
+
+username:
+winnerParticipant.username,
+
+type:
+winnerParticipant.type,
+
+operator:
+winnerParticipant.operator,
+
+channelJoined:
+winnerParticipant.channelJoined,
+
+cancelled:false
+
+};
+
+
+/*
+ IMPORTANT
+
+ အခု frontend version မှာ
+ channelJoined = false ဖြစ်နေရင်
+ Cancel state ပြမယ်။
+
+ တကယ် Telegram Channel
+ membership ကို အလိုအလျောက်
+ စစ်မယ့်အပိုင်းက backend မှာ
+ လုပ်ရမယ်။
+*/
+
+
+if(
+winnerParticipant.channelJoined===false
+){
+
+g.winner.cancelled=true;
+
+addNotification(
+"ချန်နယ်မဝင်ထားသောကြောင့် Cancel ❌"
+);
+
+}else{
+
+addNotification(
+`${g.amount}Ks Giveaway Winner #${number} 🏆`
+);
+
+}
+
+g.winTime=
+new Date().toISOString();
+
+save();
+
+}
+
+
+document.getElementById(
+"spinNumber"
+).textContent=
+"#"+g.winner.number;
+
+
+if(g.winner.cancelled){
+
+document.getElementById(
+"spinStatus"
+).innerHTML=`
+
+<div class="cancel-box">
+
+ချန်နယ်မဝင်ထားသောကြောင့် Cancel ❌
+
+</div>
+
+<br>
+
+Spin Time:
+${formatDate(g.spinTime)}
+
+<br>
+
+Winner Time:
+${formatDate(g.winTime)}
+
+`;
+
+}else{
+
+document.getElementById(
+"spinStatus"
+).innerHTML=`
+
+🎉 Winner ဖြစ်သူ
+
+<br><br>
+
+<b style="font-size:22px">
+#${g.winner.number}
+</b>
+
+<br>
+
+@${escapeHTML(
+g.winner.username
+)}
+
+<br><br>
+
+Spin Time:
+${formatDate(g.spinTime)}
+
+<br>
+
+Winner Time:
+${formatDate(g.winTime)}
+
+`;
+
+}
+
+
+document.getElementById(
+"replayButton"
+).classList.remove("hidden");
+
+document.getElementById(
+"closeSpinButton"
+).classList.remove("hidden");
+
+render();
+
+}
+
+
+/* =========================
+REPLAY
+========================= */
+
+function openReplay(id){
+
+const g=
+giveaways.find(
+x=>x.id===id
+);
+
+if(!g || !g.winner)return;
+
+currentGiveaway=g;
+
+document.getElementById(
+"spinNumber"
+).textContent="0";
+
+document.getElementById(
+"spinStatus"
+).textContent=
+"Replay Spin...";
+
+document.getElementById(
+"replayButton"
+).classList.add("hidden");
+
+document.getElementById(
+"closeSpinButton"
+).classList.add("hidden");
+
+openModal("spinModal");
+
+animateSpin(g,true);
+
+}
+
+
+function replaySpin(){
+
+if(!currentGiveaway)return;
+
+document.getElementById(
+"replayButton"
+).classList.add("hidden");
+
+document.getElementById(
+"closeSpinButton"
+).classList.add("hidden");
+
+animateSpin(
+currentGiveaway,
+true
+);
+
+}
+
+
+/* =========================
+ADMIN
+========================= */
 
 function adminLogin(){
 
- const pin=
- document.getElementById("adminPin").value;
+const pin=
+prompt(
+"Admin PIN ထည့်ပါ။"
+);
 
- if(pin!==ADMIN_PIN){
+if(pin!==ADMIN_PIN){
 
-  alert("❌ Admin PIN မှားနေပါတယ်။");
+alert(
+"PIN မှားနေပါတယ်။"
+);
 
-  return;
-
- }
-
- closeModal("adminLoginModal");
-
- renderAdmin();
-
- document.getElementById(
-  "adminModal"
- ).classList.add("show");
+return;
 
 }
 
+document.getElementById(
+"adminPanel"
+).classList.remove(
+"hidden"
+);
 
-/* CREATE */
+renderAdmin();
 
-function openCreate(){
-
- closeModal("adminModal");
-
- document.getElementById("createChannel").value="";
-
- document.getElementById("createAmount").value="";
-
- document.getElementById("createStop").value="";
-
- document.getElementById("createTime").value="";
-
-
- document.getElementById(
-  "createModal"
- ).classList.add("show");
+document.getElementById(
+"adminPanel"
+).scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
-
-function createGiveaway(){
-
- const channel=
- document.getElementById("createChannel")
- .value.trim();
-
- const amount=
- Number(
-  document.getElementById("createAmount")
-  .value
- );
-
- const stop=
- Number(
-  document.getElementById("createStop")
-  .value
- );
-
- const time=
- document.getElementById("createTime")
- .value;
-
-
- if(!channel||!amount||!stop){
-
-  alert("အချက်အလက်အားလုံး ဖြည့်ပါ။");
-
-  return;
-
- }
-
-
- const g={
-
-  id:"GW-"+Date.now(),
-
-  channel:channel,
-
-  amount:amount,
-
-  stopMember:stop,
-
-  time:time,
-
-  participants:[],
-
-  spinning:false,
-
-  finished:false,
-
-  winner:null,
-
-  receipt:null,
-
-  spinTime:null,
-
-  winTime:null
-
- };
-
-
- giveaways.unshift(g);
-
- save();
-
-
- notify(
-
-  `${amount.toLocaleString()}Ks Giveaway အသစ်ဖွင့်လိုက်ပါပြီ`,
-
-  `Stop Member — ${stop}`
-
- );
-
-
- closeModal("createModal");
-
- render();
-
- alert("🎉 Giveaway ဖန်တီးပြီးပါပြီ။");
-
-
- document.getElementById(
-  "adminModal"
- ).classList.add("show");
-
-}
-
-
-/* ADMIN RENDER */
 
 function renderAdmin(){
 
- const list=
- document.getElementById("adminList");
+const box=
+document.getElementById(
+"adminList"
+);
 
- const winners=
- document.getElementById("winnerList");
+if(!box)return;
 
-
- if(!list)return;
-
-
- if(!giveaways.length){
-
-  list.innerHTML=
-   emptyText("Giveaway မရှိသေးပါ။");
-
- }else{
-
-  list.innerHTML=
-  giveaways.map(g=>`
-
-   <div class="adminItem">
-
-    <h3>
-     ${Number(g.amount).toLocaleString()}Ks Giveaway
-    </h3>
-
-    <p>
-
-     👥 Members:
-     ${g.participants.length}/${g.stopMember}
-
-     <br>
-
-     ⏰ ${formatTime(g.time)}
-
-     <br>
-
-     ${
-      g.finished
-      ?`🏆 Winner #${g.winner.number}`
-      :g.spinning
-      ?"🎲 Spin..."
-      :"🟢 Open"
-     }
-
-    </p>
+box.innerHTML="";
 
 
-    <div class="adminButtons">
+giveaways.forEach(g=>{
 
-     <button onclick="editGiveaway('${g.id}')">
-      ✏️ Edit
-     </button>
+box.innerHTML+=`
 
-     <button class="delete"
-      onclick="deleteGiveaway('${g.id}')">
-      🗑 Delete
-     </button>
+<div class="admin-item">
 
+<b>
+${g.amount} Ks Giveaway
+</b>
 
-     ${
-      g.winner
-      ?`
-       <button
-        onclick="openReceipt('${g.id}')">
-        🧾 Receipt
-       </button>
+<div class="meta">
 
-       <button
-        onclick="adminViewWinner('${g.id}')">
-        🏆 Winner
-       </button>
-      `
-      :""
-     }
+Members:
+${g.participants.length}/${g.stop}
 
-    </div>
+<br>
 
-   </div>
+Time:
+${formatDate(g.time)}
 
-  `).join("");
+${
+g.winner
+?`
+<br>
+Winner:
+#${g.winner.number}
 
- }
+${
+g.winner.cancelled
+?`
+<br>
+❌ Cancelled:
+ချန်နယ်မဝင်ထားသောကြောင့်
+`
+:""
+}
 
+`
+:""
+}
 
- const won=
- giveaways.filter(g=>g.winner);
-
-
- if(!won.length){
-
-  winners.innerHTML=
-   emptyText("Winner မရှိသေးပါ။");
-
- }else{
-
-  winners.innerHTML=
-  won.map(g=>`
-
-   <div class="adminItem">
-
-    <h3>
-     🏆 ${Number(g.amount).toLocaleString()}Ks
-    </h3>
-
-    <p>
-
-     Winner Number:
-     <b>#${g.winner.number}</b>
-
-     <br>
-
-     📱 ${safe(g.winner.phone)}
-
-     <br>
-
-     ${
-      g.winner.bill
-      ?"📱 "+safe(g.winner.bill)
-      :"💵 Money"
-     }
-
-     <br>
-
-     🕐 ${formatTime(g.winTime)}
-
-    </p>
+</div>
 
 
-    ${
-     g.receipt
-     ?`<img class="receipt" src="${g.receipt}">`
-     :""
-    }
+<div class="admin-actions">
 
-   </div>
+<button
+class="small edit"
+onclick="editGiveaway(${g.id})">
 
-  `).join("");
+Edit
 
- }
+</button>
+
+
+<button
+class="small delete"
+onclick="deleteGiveaway(${g.id})">
+
+Delete
+
+</button>
+
+
+${
+g.winner && !g.winner.cancelled
+?`
+<button
+class="small receipt-btn"
+onclick="openReceipt(${g.id})">
+
+🧾 Receipt
+
+</button>
+`
+:""
+}
+
+</div>
+
+</div>
+
+`;
+
+});
 
 }
 
 
-/* EDIT */
+/* =========================
+CREATE
+========================= */
+
+function openCreate(){
+
+editingId=null;
+
+document.getElementById(
+"formTitle"
+).textContent=
+"Giveaway အသစ်";
+
+document.getElementById(
+"gChannel"
+).value="";
+
+document.getElementById(
+"gAmount"
+).value="";
+
+document.getElementById(
+"gStop"
+).value="";
+
+document.getElementById(
+"gTime"
+).value="";
+
+openModal(
+"createModal"
+);
+
+}
+
+
+function saveGiveaway(){
+
+const channel=
+document.getElementById(
+"gChannel"
+).value.trim();
+
+const amount=
+Number(
+document.getElementById(
+"gAmount"
+).value
+);
+
+const stop=
+Number(
+document.getElementById(
+"gStop"
+).value
+);
+
+const time=
+document.getElementById(
+"gTime"
+).value;
+
+
+if(
+!channel ||
+!amount ||
+!stop
+){
+
+alert(
+"အချက်အလက်အားလုံး ဖြည့်ပါ။"
+);
+
+return;
+
+}
+
+
+if(editingId){
+
+const g=
+giveaways.find(
+x=>x.id===editingId
+);
+
+g.channel=channel;
+
+g.amount=amount;
+
+g.stop=stop;
+
+if(time)
+g.time=
+new Date(time).toISOString();
+
+
+}else{
+
+giveaways.push({
+
+id:Date.now(),
+
+channel:channel,
+
+amount:amount,
+
+stop:stop,
+
+time:
+time
+?new Date(time).toISOString()
+:new Date().toISOString(),
+
+participants:[],
+
+winner:null,
+
+spinTime:null,
+
+winTime:null,
+
+receipt:null
+
+});
+
+}
+
+
+save();
+
+closeModal(
+"createModal"
+);
+
+render();
+
+alert(
+"Giveaway သိမ်းပြီးပါပြီ ✅"
+);
+
+}
+
+
+/* =========================
+EDIT
+========================= */
 
 function editGiveaway(id){
 
- const g=
- giveaways.find(x=>x.id===id);
+const g=
+giveaways.find(
+x=>x.id===id
+);
 
- if(!g)return;
+if(!g)return;
 
+editingId=id;
 
- document.getElementById("editId")
- .value=g.id;
+document.getElementById(
+"formTitle"
+).textContent=
+"Giveaway Edit";
 
- document.getElementById("editChannel")
- .value=g.channel;
+document.getElementById(
+"gChannel"
+).value=g.channel;
 
- document.getElementById("editAmount")
- .value=g.amount;
+document.getElementById(
+"gAmount"
+).value=g.amount;
 
- document.getElementById("editStop")
- .value=g.stopMember;
+document.getElementById(
+"gStop"
+).value=g.stop;
 
- document.getElementById("editTime")
- .value=g.time||"";
+document.getElementById(
+"gTime"
+).value=
+g.time
+?new Date(g.time)
+ .toISOString()
+ .slice(0,16)
+:"";
 
-
- closeModal("adminModal");
-
- document.getElementById(
-  "editModal"
- ).classList.add("show");
-
-}
-
-
-function saveEdit(){
-
- const id=
- document.getElementById("editId").value;
-
- const g=
- giveaways.find(x=>x.id===id);
-
- if(!g)return;
-
-
- g.channel=
- document.getElementById("editChannel")
- .value.trim();
-
- g.amount=
- Number(
-  document.getElementById("editAmount").value
- );
-
- g.stopMember=
- Number(
-  document.getElementById("editStop").value
- );
-
- g.time=
- document.getElementById("editTime").value;
-
-
- save();
-
- closeModal("editModal");
-
- render();
-
- document.getElementById(
-  "adminModal"
- ).classList.add("show");
+openModal(
+"createModal"
+);
 
 }
 
 
-/* DELETE */
+/* =========================
+DELETE
+========================= */
 
 function deleteGiveaway(id){
 
- if(!confirm(
-  "ဒီ Giveaway ကို ဖျက်မှာ သေချာပါသလား?"
- ))return;
+if(
+!confirm(
+"ဒီ Giveaway ကို Delete လုပ်မလား?"
+)
+)return;
 
+giveaways=
+giveaways.filter(
+g=>g.id!==id
+);
 
- giveaways=
- giveaways.filter(g=>g.id!==id);
+save();
 
- save();
-
- render();
+render();
 
 }
 
 
-/* RECEIPT */
+/* =========================
+RECEIPT
+========================= */
 
 function openReceipt(id){
 
- document.getElementById(
-  "receiptId"
- ).value=id;
+receiptGiveaway=
+giveaways.find(
+x=>x.id===id
+);
 
- document.getElementById(
-  "receiptFile"
- ).value="";
+if(!receiptGiveaway)return;
 
+document.getElementById(
+"receiptFile"
+).value="";
 
- closeModal("adminModal");
-
- document.getElementById(
-  "receiptModal"
- ).classList.add("show");
+openModal(
+"receiptModal"
+);
 
 }
 
 
 function saveReceipt(){
 
- const id=
- document.getElementById("receiptId")
- .value;
+const file=
+document.getElementById(
+"receiptFile"
+).files[0];
 
- const file=
- document.getElementById("receiptFile")
- .files[0];
+if(!file){
 
+alert(
+"Receipt ပုံရွေးပါ။"
+);
 
- if(!file){
-
-  alert("ပြေစာပုံ ရွေးပါ။");
-
-  return;
-
- }
-
-
- const reader=
- new FileReader();
-
-
- reader.onload=function(){
-
-  const g=
-  giveaways.find(x=>x.id===id);
-
-  if(!g)return;
-
-
-  g.receipt=
-   reader.result;
-
-  save();
-
-
-  notify(
-
-   `${Number(g.amount).toLocaleString()}Ks Giveaway ဆုငွေ လွှဲပြီးပါပြီ`,
-
-   "🧾 ပြေစာရောက်ပါပြီ"
-
-  );
-
-
-  closeModal("receiptModal");
-
-  render();
-
-  alert("🧾 Receipt တင်ပြီးပါပြီ။");
-
- };
-
-
- reader.readAsDataURL(file);
+return;
 
 }
 
 
-/* ADMIN WINNER */
-
-function adminViewWinner(id){
-
- const g=
- giveaways.find(x=>x.id===id);
-
- if(!g||!g.winner)return;
-
- closeModal("adminModal");
-
- document.getElementById(
-  "detailTitle"
- ).textContent=
- `${Number(g.amount).toLocaleString()}Ks Giveaway`;
-
- renderSpinModal(
-  g,
-  g.winner.number,
-  false
- );
-
- document.getElementById(
-  "detailModal"
- ).classList.add("show");
-
-}
+const reader=
+new FileReader();
 
 
-/* TIME */
+reader.onload=()=>{
 
-function formatTime(t){
+receiptGiveaway.receipt=
+reader.result;
 
- if(!t)return "မသတ်မှတ်ရသေးပါ";
+save();
 
- const d=new Date(t);
+closeModal(
+"receiptModal"
+);
 
- if(isNaN(d.getTime()))
-  return t;
+addNotification(
+"Winner အတွက် Receipt ရရှိပါပြီ 🧾"
+);
 
- return d.toLocaleString();
+render();
+
+alert(
+"Receipt Upload ပြီးပါပြီ ✅"
+);
+
+};
+
+
+reader.readAsDataURL(file);
 
 }
 
 
-/* SAFE */
+/* =========================
+MODAL
+========================= */
 
-function safe(x){
+function openModal(id){
 
- return String(x??"")
- .replaceAll("&","&amp;")
- .replaceAll("<","&lt;")
- .replaceAll(">","&gt;")
- .replaceAll('"',"&quot;")
- .replaceAll("'","&#039;");
-
-}
-
-function safeAttr(x){
-
- return String(x??"")
- .replaceAll('"',"&quot;")
- .replaceAll("'","&#039;");
+document.getElementById(id)
+.style.display="flex";
 
 }
 
 
-/* DEMO */
+function closeModal(id){
 
-if(!giveaways.length){
-
- giveaways.push({
-
-  id:"DEMO-2000",
-
-  channel:"https://t.me/",
-
-  amount:2000,
-
-  stopMember:20,
-
-  time:"",
-
-  participants:[],
-
-  spinning:false,
-
-  finished:false,
-
-  winner:null,
-
-  receipt:null,
-
-  spinTime:null,
-
-  winTime:null
-
- });
-
- save();
+document.getElementById(id)
+.style.display="none";
 
 }
 
+
+/* =========================
+DATE
+========================= */
+
+function formatDate(value){
+
+if(!value)return"-";
+
+return new Date(value)
+.toLocaleString();
+
+}
+
+
+/* =========================
+ESCAPE
+========================= */
+
+function escapeHTML(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+START
+========================= */
 
 render();
 
 </script>
+
+
+<!--
+==================================================
+TELEGRAM OFFICIAL LOGIN
+==================================================
+
+YOUR_BOT_USERNAME ကို
+ကိုယ့် Telegram Bot username နဲ့ပြောင်းပါ။
+
+ဥပမာ:
+
+<script
+async
+src="https://telegram.org/js/telegram-widget.js?22"
+data-telegram-login="YOUR_BOT_USERNAME"
+data-size="large"
+data-userpic="true"
+data-request-access="write"
+data-onauth="onTelegramAuth(user)"
+data-lang="en">
+</script>
+
+==================================================
+-->
 
 </body>
 </html>
